@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhsu37xndg8re"]
+
+[ext_resource type="Script" path="res://Scripts/hand.gd" id="1_ikxuw"]
+[ext_resource type="PackedScene" uid="uid://cf4eddnptk33r" path="res://Scenes/card_ui.tscn" id="2_bwbmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a84uh"]
+size = Vector2(256, 100)
+
+[node name="Prototype" type="Node2D"]
+
+[node name="CardDropArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+visible = false
+position = Vector2(128, 50)
+shape = SubResource("RectangleShape2D_a84uh")
+
+[node name="UI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+
+[node name="Hand" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -30.0
+offset_right = 75.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("1_ikxuw")
+
+[node name="CardUI" parent="UI/Hand" instance=ExtResource("2_bwbmc")]
+layout_mode = 2
+
+[node name="CardUI2" parent="UI/Hand" instance=ExtResource("2_bwbmc")]
+layout_mode = 2
+
+[node name="CardUI3" parent="UI/Hand" instance=ExtResource("2_bwbmc")]
+layout_mode = 2
